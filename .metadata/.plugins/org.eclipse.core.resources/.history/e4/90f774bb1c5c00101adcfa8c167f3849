@@ -1,0 +1,10 @@
+package bookstore;
+
+public class Paper extends Book {
+	int stock;
+	
+	public Paper(int stock){
+		super();
+		this.stock = stock;
+	}
+}

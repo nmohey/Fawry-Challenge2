@@ -1,0 +1,11 @@
+package bookstore;
+
+public class Demo extends Book {
+	public Demo(){
+		super();
+	}
+	
+	public boolean isForSale(){
+		return false;
+	}
+}

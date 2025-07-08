@@ -1,0 +1,7 @@
+package bookstore;
+
+public class ShippingService {
+	public void send(String address){
+		System.out.println("Paper book sent to Shipping Service to address: " + address);
+	}
+}

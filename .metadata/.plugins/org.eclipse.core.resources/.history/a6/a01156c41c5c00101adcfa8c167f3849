@@ -1,0 +1,7 @@
+package bookstore;
+
+public class Demo extends Book {
+	public Demo(){
+		super();
+	}
+}

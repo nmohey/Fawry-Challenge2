@@ -1,0 +1,21 @@
+package bookstore;
+
+public class Paper extends Book {
+	int stock;
+	
+	public Paper(int stock){
+		super();
+		this.stock = stock;
+	}
+	
+	public double buy(int quantity, String email, String address){
+		if(this.stock >= quantity){
+			this.stock -= quantity;
+			System.out.println("Stock: " + this.stock);
+			System.out.println("Paper book sent to Shipping Service to address: " + address);
+			return this.price*quantity;
+		}
+		System.out.println("Not enough stock in inventory!");
+		return 0.0;
+	}
+}

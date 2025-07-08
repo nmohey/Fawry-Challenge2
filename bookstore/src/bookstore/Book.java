@@ -1,0 +1,30 @@
+package bookstore;
+
+public class Book {
+	String isbn;
+	String title;
+	int year;
+	double price;
+	
+	public Book(){
+		isbn = "0";
+		title = "";
+		year = 0;
+		price = 0.0;
+	}
+	
+	public void setInfo(String isbn, String title, int year, double price){
+		this.isbn = isbn;
+		this.title = title;
+		this.year = year;
+		this.price = price;
+	}
+	
+	public boolean isForSale(){
+		return true;
+	}
+	
+	public double buy(int quantity, String email, String address){
+		return price;
+	}
+}

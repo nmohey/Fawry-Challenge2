@@ -1,0 +1,27 @@
+package bookstore;
+
+public class Main {
+	public static void main(String args[]){
+		Book b1 = new Paper(5);
+		Book b2 = new EBook("pdf");
+		Book b3 = new Demo();
+		Book b4 = new Paper(10);
+		Book b5 = new Demo();
+		
+		Inventory bookstore = new Inventory();
+		
+		bookstore.add(b1, "1234", "Macbeth", 1990, 20);
+		bookstore.add(b2, "2345", "The Fault in our Stars", 2010, 30);
+		bookstore.add(b3, "3456", "Lord of the Rings", 1999, 15);
+		bookstore.add(b4, "4567", "To Kill a Mocking Bird", 2003, 25);
+		bookstore.add(b5, "5678", "We were Liars", 2024, 45);
+		
+		bookstore.remove(25);
+		
+		double price1  = bookstore.buy("2345", 2, "anna@gmail.com", "1075 Street");
+		System.out.println("Price amount: " + price1 + "\n");
+		double price2 = bookstore.buy("4567", 3, "alex@gmail.com", "1254 Street");
+		System.out.println("Price amount: " + price2 + "\n");
+		
+	}
+}

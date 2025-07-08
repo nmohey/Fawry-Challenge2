@@ -1,0 +1,19 @@
+package bookstore;
+
+public class Paper extends Book {
+	int stock;
+	
+	public Paper(int stock){
+		super();
+		this.stock = stock;
+	}
+	
+	public double buy(int quantity, String email, String address){
+		if(this.stock >= quantity){
+			this.stock -= quantity;
+			ShippingService.send(address);
+			return this.price*quantity;
+		}
+		throw new IllegalArgumentException("Not enough stock in inventory.");
+	}
+}

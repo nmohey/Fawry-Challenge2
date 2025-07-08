@@ -1,0 +1,55 @@
+package bookstore;
+
+import java.util.ArrayList;
+
+public class Inventory {
+	ArrayList<Book> books = new ArrayList();
+	
+	public void add(Book book, String isbn, String title, int year, double price){
+		book.setInfo(isbn, title, year, price);
+		books.add(book);
+	}
+	
+	public ArrayList<Book> remove(int year){
+		ArrayList<Book> res = new ArrayList();
+		int size = books.size();
+		for(int i=0; i<size; i++){
+			if(books.get(i).year < year){
+				res.add(books.remove(i));
+			}
+		}
+		return res;
+	}
+	
+	public double buy(String isbn, int quantity, String email, String address){
+		for(int i=0; i<books.size(); i++){
+			Book book = books.get(i);
+			if(book.isbn == isbn){
+				if(book instanceof Paper){
+					if(((Paper)book).stock >= quantity){
+						((Paper)book).stock -= quantity;
+						return ((Paper)book).price*quantity;
+					}
+					else{
+						System.out.println("Not enough stock in inventory!");
+						return 0.0;
+					}
+				}
+				else if(book instanceof EBook){
+					
+				}
+				return book.price;
+			}
+		}
+		System.out.println("Book not available in inventory.");
+		return 0.0;
+	}
+	
+	public void updateInventory(String isbn,int quantity){
+		for(int i=0; i<books.size(); i++){
+			if(books.get(i).isbn == isbn){
+				((Paper)books.get(i)).stock = quantity;
+			}
+		}
+	}
+}

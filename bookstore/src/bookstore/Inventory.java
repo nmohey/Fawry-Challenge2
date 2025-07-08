@@ -1,0 +1,47 @@
+package bookstore;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+public class Inventory {
+	ArrayList<Book> books = new ArrayList<>();
+	
+	public void add(Book book, String isbn, String title, int year, double price){
+		book.setInfo(isbn, title, year, price);
+		books.add(book);
+	}
+	
+	public ArrayList<Book> remove(int years){
+		ArrayList<Book> tmp = new ArrayList<>(books);
+		ArrayList<Book> res = new ArrayList<>();
+		int size = books.size();
+		for(int i=0; i<size; i++){
+			if(books.get(i).year < (LocalDate.now().getYear() - years)){
+				System.out.println(books.get(i).title + " has been removed from inventory.");
+				tmp.remove(books.get(i));
+				res.add(books.get(i));
+			}
+		}
+		books = tmp;
+		return res;
+	}
+	
+	public double buy(String isbn, int quantity, String email, String address){
+		for(int i=0; i<books.size(); i++){
+			if(books.get(i).isbn == isbn){
+				return books.get(i).buy(quantity, email, address);
+			}
+		}
+		System.out.println("Book not available in inventory.");
+		return 0.0;
+	}
+	
+	public void updateInventory(String isbn,int quantity){
+		for(int i=0; i<books.size(); i++){
+			if(books.get(i).isbn == isbn){
+				((Paper)books.get(i)).stock += quantity;
+				return;
+			}
+		}
+	}
+}

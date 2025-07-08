@@ -1,0 +1,10 @@
+package bookstore;
+
+public class EBook {
+	String filetype;
+	
+	public EBook(String filetype){
+		super();
+		this.filetype = filetype;
+	}
+}
